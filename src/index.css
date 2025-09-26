@@ -2,17 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-The @apply directive should not be used with the group utility class.
-*/
-
 @layer base {
   :root {
-   
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
+    
+    /* Mobile-specific variables */
+    --mobile-header: 220 13% 18%;
+    --mobile-header-foreground: 0 0% 98%;
+    --mobile-primary: 217 91% 60%;
+    --mobile-success: 142 76% 36%;
+    --mobile-warning: 38 92% 50%;
+    --mobile-error: 0 84% 60%;
+    --mobile-surface: 0 0% 98%;
+    --mobile-surface-variant: 0 0% 95%;
   }
 
   .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 217 91% 60%;
+  }
 
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  }
+}
+
+/* Mobile-first responsive utilities */
+@layer components {
+  .mobile-container {
+    @apply max-w-sm mx-auto bg-mobile-surface min-h-screen;
+    background-color: hsl(var(--mobile-surface));
+  }
+
+  .mobile-header {
+    @apply sticky top-0 z-50 border-b;
+    background-color: hsl(var(--mobile-header));
+    color: hsl(var(--mobile-header-foreground));
+  }
+
+  .mobile-card {
+    @apply rounded-xl border shadow-sm p-4;
+    background-color: hsl(var(--card));
+  }
+
+  .mobile-button-primary {
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 font-medium transition-colors;
+    background-color: hsl(var(--mobile-primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .mobile-button-primary:hover {
+    @apply opacity-90;
+  }
+
+  .mobile-input {
+    @apply w-full rounded-lg border px-3 py-3 text-base transition-colors;
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--background));
+  }
+
+  .mobile-input:focus {
+    @apply ring-2 ring-offset-0;
+    ring-color: hsl(var(--mobile-primary));
+    border-color: hsl(var(--mobile-primary));
   }
 }
